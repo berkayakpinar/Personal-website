@@ -1,11 +1,11 @@
-(function ($) {
+(function($) {
   "use strict";
   var is_scroll = false;
   var is_resize = false;
   var myscroll, myresize;
 
   //Run function when document ready
-  $(document).ready(function () {
+  $(document).ready(function() {
     init_full_height();
     init_pageloader();
     init_typed();
@@ -17,21 +17,21 @@
   });
 
   //Run function when window on scroll
-  $(window).on("scroll", function () {
+  $(window).on("scroll", function() {
     init_scroll();
     is_scroll = true;
     clearTimeout(myscroll);
-    myscroll = setTimeout(function () {
+    myscroll = setTimeout(function() {
       is_scroll = false;
       init_update_uikit();
     }, 300);
   });
 
   //Run function when window on resize
-  $(window).on("resize", function () {
+  $(window).on("resize", function() {
     is_resize = true;
     clearTimeout(myresize);
-    myresize = setTimeout(function () {
+    myresize = setTimeout(function() {
       is_resize = false;
       init_full_height();
       init_scroll();
@@ -43,10 +43,10 @@
   //============================================
 
   function init_chart_circle() {
-    $(".circle-progress").each(function (i, el) {
+    $(".circle-progress").each(function(i, el) {
       var $el = $(el);
       $($el).circleProgress({
-        value: $el.data("value"),
+        value: $el.data("value")
       });
     });
   }
@@ -65,16 +65,16 @@
   }
 
   function init_menu_toggle() {
-    $(".yb-menu-togggle").on("click", function () {
+    $(".yb-menu-togggle").on("click", function() {
       $("#body-app").toggleClass("yb-menu-open");
     });
 
-    $("#btn-menu-toggle").on("click", function () {
+    $("#btn-menu-toggle").on("click", function() {
       $("#main-menu").toggleClass("open-menu");
       return false;
     });
 
-    $("#menucollapse .uk-navbar-nav a").on("click", function () {
+    $("#menucollapse .uk-navbar-nav a").on("click", function() {
       $("#main-menu").toggleClass("open-menu");
     });
   }
@@ -101,9 +101,9 @@
 
   function init_pageloader() {
     var $pageloader = $("#pageloader");
-    setTimeout(function () {
+    setTimeout(function() { 
       $pageloader.addClass("uk-transition-fade");
-      setTimeout(function () {
+      setTimeout(function() {
         $pageloader.addClass("page-is-loaded");
         init_check_hash_url();
       }, 400);
@@ -111,7 +111,7 @@
   }
 
   function init_inner_link() {
-    $(".yb-inner-link").on("click", function () {
+    $(".yb-inner-link").on("click", function() {
       var $el = $(this).attr("href");
       var ofsset = parseInt($(this).attr("data-offset"));
       if ($($el).length) {
@@ -123,13 +123,9 @@
   }
 
   function init_check_hash_url() {
-    if (
-      window.location.hash &&
-      window.location.hash != "" &&
-      $(window.location.hash).length
-    ) {
+    if (window.location.hash && window.location.hash !="" && $(window.location.hash).length) {
       var speed = window.location.hash == "#home" ? 0 : 700;
-      console.log(window.location.hash);
+      console.log(window.location.hash)
       init_scroll_to($(window.location.hash), speed, 79);
     }
   }
@@ -137,11 +133,11 @@
   function init_scroll_to($el, speed, offset) {
     $("html, body").animate(
       {
-        scrollTop: $el.offset().top - offset,
+        scrollTop: $el.offset().top - offset
       },
       {
         duration: speed,
-        easing: "easeInOutExpo",
+        easing: "easeInOutExpo"
       }
     );
   }
@@ -150,9 +146,9 @@
     var $typed = $("#typed");
     if ($typed.length) {
       var typed = new Typed("#typed", {
-        strings: ["developer", "designer", "engineer", "freelancer"],
+        strings: ["developer", "freelancer", "marketer", "photographer"],
         loop: true,
-        typeSpeed: 100,
+        typeSpeed: 70
       });
     }
   }
@@ -160,15 +156,16 @@
   function init_contact_form() {
     var $el = $("#contact-form");
     var $alert_wrap = $("#contact-form-alert");
-
+     
     if ($el.length && $alert_wrap.length) {
-      $el.on("submit", function () {
+      $el.on("submit", function() {
         var $btn = $("#btn-contact-form");
         var params = $el.serialize();
 
         init_btn_loading($btn, true);
 
-        $.post("src/php/sendmail.php", params, function (data) {
+        
+        $.post("src/php/sendmail.php", params, function(data) {
           var dt = JSON.parse(data);
           if (dt.status == "error") {
             var alert = init_alert(
@@ -186,7 +183,7 @@
             );
             $el.trigger("reset");
           }
-          $.each(dt.error_msg, function (key, value) {
+          $.each(dt.error_msg, function(key, value) {
             if (value == "") {
               $("#" + key).removeClass("uk-form-danger");
             } else {
@@ -237,24 +234,24 @@
     return alert;
   }
 
-  function init_portfolio_details() {
-    $(".show-portfolio").on("click", function () {
+  function init_portfolio_details() { 
+    $(".show-portfolio").on("click", function() {
       var $this = $(this);
       var $el = $("#show-portofolio-details");
       var $wrap = $("#portofolio-details");
-      $wrap.addClass("uk-animation-toggle");
+      $wrap.addClass('uk-animation-toggle');
       UIkit.modal($el).show();
 
       //show loading first
       $wrap.html(
         '<div class="uk-position-center  uk-text-center">' +
           "<div data-uk-spinner></div> " +
-          "</div>"
-      );
-
-      $.post($this.attr("href"), function (data) {
-        $wrap.html(data);
-        $wrap.removeClass("uk-animation-toggle");
+        "</div>"
+      ); 
+      
+      $.post($this.attr("href"), function(data) {
+        $wrap.html(data); 
+        $wrap.removeClass('uk-animation-toggle');
       });
       return false;
     });
