@@ -32,11 +32,17 @@ html {
 }
 
 .avatar {
-  background-image: url("peep.png");
+  background-image: url("peep1.png");
   background-size: cover;
   width: 25rem;
   height: 25rem;
   background-position: center;
+  transition: all 0.1s;
+}
+
+.avatar:hover,
+.avatar:active {
+  background-image: url("peep.png");
 }
 
 .sentence {
@@ -57,6 +63,10 @@ html {
 .icon {
   max-width: 2rem;
   filter: invert(1);
+}
+
+.icon:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 40rem) {
