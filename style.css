@@ -32,7 +32,7 @@ html {
 }
 
 .avatar {
-  background-image: url("peep1.png");
+  background-image: url("peep1.webp");
   background-size: cover;
   width: 25rem;
   height: 25rem;
@@ -42,7 +42,7 @@ html {
 
 .avatar:hover,
 .avatar:active {
-  background-image: url("peep.png");
+  background-image: url("peep.webp");
 }
 
 .sentence {
