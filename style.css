@@ -6,7 +6,7 @@
 }
 
 html {
-  font-size: 70%;
+  font-size: 40%;
 }
 
 .container {
@@ -23,8 +23,8 @@ html {
 .portrait-image {
   background-color: #00607a;
   border-radius: 200px;
-  width: 25rem;
-  height: 25rem;
+  width: 35rem;
+  height: 35rem;
   align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
@@ -34,8 +34,8 @@ html {
 .avatar {
   background-image: url("peep1.webp");
   background-size: cover;
-  width: 25rem;
-  height: 25rem;
+  width: 35rem;
+  height: 35rem;
   background-position: center;
   transition: all 0.1s;
 }
@@ -51,17 +51,22 @@ html {
   margin-bottom: 10rem;
 }
 
+.introduce {
+  font-size: 6rem;
+  font-weight: 600;
+}
+
 .auto-type {
   color: #e57e00;
 }
 
 .social-media {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .icon {
-  max-width: 2rem;
+  max-width: 4rem;
   filter: invert(1);
 }
 
@@ -71,7 +76,7 @@ html {
 
 @media (max-width: 40rem) {
   html {
-    font-size: 35%;
+    font-size: 30%;
   }
 
   .container {
@@ -81,12 +86,5 @@ html {
 
   .sentence {
     margin-bottom: 20rem;
-  }
-
-  .social-media {
-    gap: 5rem;
-  }
-  .icon {
-    max-width: 3rem;
   }
 }
